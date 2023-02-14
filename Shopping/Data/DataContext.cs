@@ -10,12 +10,18 @@ namespace Shopping.Data
 
         }
 
+        public DbSet<Category> Categories { get; set; }
+
         public DbSet<Country> Countries { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Indices para que no se repita los nombres de la entidad
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Category>().HasIndex(c => c.Name).IsUnique();
             modelBuilder.Entity<Country>().HasIndex(c => c.Name).IsUnique();
+
         }
     }
 }
