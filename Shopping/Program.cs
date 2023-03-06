@@ -11,6 +11,9 @@ builder.Services.AddDbContext<DataContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+//Esta linea sirve para hacer cambios en la vista sin tener que correr el codigo
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
