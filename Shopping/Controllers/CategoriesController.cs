@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shopping.Data;
 using Shopping.Data.Entities;
+using System.Data;
 using System.Diagnostics.Metrics;
 
 namespace Shopping.Controllers
 {
+    [Authorize(Roles = "Admin")] // solo el administrador podra observar este controlador
     public class CategoriesController : Controller
     {
         private readonly DataContext _context;

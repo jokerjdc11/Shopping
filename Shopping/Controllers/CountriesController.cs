@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shopping.Data;
 using Shopping.Data.Entities;
 using Shopping.Models;
+using System.Data;
 
 namespace Shopping.Controllers
 {
+    [Authorize(Roles = "Admin")] // solo el administrador podra observar este controlador
     public class CountriesController : Controller
     {
         private readonly DataContext _context;
